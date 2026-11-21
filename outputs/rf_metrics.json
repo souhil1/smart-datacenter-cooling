@@ -1,0 +1,182 @@
+{
+  "horizon_min": 5,
+  "eps": 0.05,
+  "eps_grid": [
+    0.005,
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "levels": [
+    "ECO",
+    "NORMAL",
+    "BOOST"
+  ],
+  "power_frac": [
+    0.45,
+    0.7,
+    1.0
+  ],
+  "p_rated_kw": 20.0,
+  "ef_kg_per_kwh": 0.5,
+  "price_per_kwh": 0.1,
+  "thresholds_C": {
+    "warm": 35.211,
+    "hotspot": 36.023
+  },
+  "features": [
+    "hot_max",
+    "hot_mean",
+    "cold_mean",
+    "delta_T",
+    "rh_hot",
+    "rh_cold",
+    "p_warm",
+    "p_hotspot",
+    "d1",
+    "d5",
+    "std5",
+    "load",
+    "load_trend"
+  ],
+  "forecast_metrics": {
+    "rf_mae_C": 0.2863040607025341,
+    "persistence_mae_C": 0.5410653846153848,
+    "rf_r2": 0.5593160123290277,
+    "persistence_r2": -0.41559313241412266
+  },
+  "ablation": {
+    "sensors only": {
+      "accuracy": 0.7346153846153847,
+      "macro_f1": 0.6725670012821716
+    },
+    "sensors + CNN": {
+      "accuracy": 0.7307692307692307,
+      "macro_f1": 0.676147706090282
+    },
+    "sensors + CNN + LSTM (full)": {
+      "accuracy": 0.7346153846153847,
+      "macro_f1": 0.6858893143056038
+    }
+  },
+  "feature_importance": {
+    "delta_T": 0.255,
+    "hot_mean": 0.1362,
+    "cold_mean": 0.1126,
+    "rh_hot": 0.0825,
+    "d5": 0.0638,
+    "hot_max": 0.0608,
+    "p_hotspot": 0.0521,
+    "rh_cold": 0.0473,
+    "std5": 0.0456,
+    "p_warm": 0.0434,
+    "load": 0.039,
+    "d1": 0.0333,
+    "load_trend": 0.0283
+  },
+  "sklearn_version": "1.6.1",
+  "n_test": 260,
+  "test_period": [
+    "2018-11-03 14:35:00",
+    "2018-11-03 18:54:00"
+  ],
+  "test_table": {
+    "Always BOOST (baseline)": {
+      "energy_kWh": 86.6667,
+      "co2_kg": 43.3333,
+      "cost": 8.6667,
+      "undercool_pct": 0.0,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 0.0
+    },
+    "Always NORMAL": {
+      "energy_kWh": 60.6667,
+      "co2_kg": 30.3333,
+      "cost": 6.0667,
+      "undercool_pct": 11.9231,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 30.0
+    },
+    "Reactive rule (no ML)": {
+      "energy_kWh": 51.5333,
+      "co2_kg": 25.7667,
+      "cost": 5.1533,
+      "undercool_pct": 22.3077,
+      "severe_undercool_pct": 4.6154,
+      "saving_vs_boost_pct": 40.5385
+    },
+    "RF controller eps=0.005": {
+      "energy_kWh": 84.2667,
+      "co2_kg": 42.1333,
+      "cost": 8.4267,
+      "undercool_pct": 0.0,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 2.7692
+    },
+    "RF controller eps=0.01": {
+      "energy_kWh": 82.5,
+      "co2_kg": 41.25,
+      "cost": 8.25,
+      "undercool_pct": 0.0,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 4.8077
+    },
+    "RF controller eps=0.02": {
+      "energy_kWh": 79.85,
+      "co2_kg": 39.925,
+      "cost": 7.985,
+      "undercool_pct": 0.0,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 7.8654
+    },
+    "RF controller eps=0.05": {
+      "energy_kWh": 71.3667,
+      "co2_kg": 35.6833,
+      "cost": 7.1367,
+      "undercool_pct": 1.9231,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 17.6538
+    },
+    "RF controller eps=0.1": {
+      "energy_kWh": 62.8167,
+      "co2_kg": 31.4083,
+      "cost": 6.2817,
+      "undercool_pct": 5.0,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 27.5192
+    },
+    "RF controller eps=0.2": {
+      "energy_kWh": 56.4,
+      "co2_kg": 28.2,
+      "cost": 5.64,
+      "undercool_pct": 6.9231,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 34.9231
+    },
+    "RF controller eps=0.3": {
+      "energy_kWh": 54.1333,
+      "co2_kg": 27.0667,
+      "cost": 5.4133,
+      "undercool_pct": 9.6154,
+      "severe_undercool_pct": 0.0,
+      "saving_vs_boost_pct": 37.5385
+    },
+    "RF controller eps=0.5": {
+      "energy_kWh": 50.4833,
+      "co2_kg": 25.2417,
+      "cost": 5.0483,
+      "undercool_pct": 14.2308,
+      "severe_undercool_pct": 0.3846,
+      "saving_vs_boost_pct": 41.75
+    }
+  },
+  "assumptions": [
+    "Workload (2013) and sensor (2018) datasets are coupled by time of day",
+    "Cooling power fractions / rated power / emission factor / price are assumptions",
+    "Open-loop replay: no HVAC actuator data exists, temperatures are assumed independent of the action"
+  ]
+}
